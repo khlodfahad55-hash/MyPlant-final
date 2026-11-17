@@ -35,6 +35,10 @@ struct NotificationManager {
             .removePendingNotificationRequests(withIdentifiers: [plant.id])
     }
 }
+//استخدمت الكلاس لان عدة شاشات تشارك نفس النسخه
+//ObservableObject يخلي الشاشات تراقب الكلاس
+// MARK: - ViewModel: يدير بيانات النباتات وكل العمليات عليها
+
 final class PlantsViewModel: ObservableObject {
 
     // البيانات (@Published: أي تغيير يحدّث الشاشات تلقائياً)
@@ -46,6 +50,7 @@ final class PlantsViewModel: ObservableObject {
     @Published var showTodayReminders = false
 
     // قيم محسوبة
+    //عدد النباتات المعلّمة. استخدمت intersection (المشترك) عشان لو انحذفت نبتة وهي معلّمة، ما تنحسب.
     var completedCount: Int {
         completedPlants.intersection(plants.map(\.id)).count
     }

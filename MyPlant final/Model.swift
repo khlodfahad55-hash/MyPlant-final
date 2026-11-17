@@ -1,5 +1,5 @@
 import SwiftUI
-
+//بيانات النبته 
 struct Plant: Identifiable {
     let id: String
     var name: String
